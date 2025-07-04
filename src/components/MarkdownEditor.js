@@ -1,5 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const MarkdownEditor = ({ markdownText, setMarkdownText }) => {
   const handleChange = (e) => {
@@ -15,7 +16,9 @@ const MarkdownEditor = ({ markdownText, setMarkdownText }) => {
         placeholder="Write your markdown here..."
       />
       <div className="preview">
-        <ReactMarkdown>{markdownText}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {markdownText}
+        </ReactMarkdown>
       </div>
     </>
   );
