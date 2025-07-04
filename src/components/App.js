@@ -1,11 +1,13 @@
 import React from "react";
+import MarkdownEditor from "./MarkdownEditor";
+import ".styles/App.css";
 
-const App = () => {
+function App() {
   return (
-    <main id="main">
-      <p>Now I can render any React component on any DOM node I want using ReactDOM.render</p>
-    </main>
+    <div className="app">
+      <MarkdownEditor />
+    </div>
   );
-};
+}
 
 export default App;
