@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { marked } from "marked";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
-const MarkdownEditor = () => {
-  const [markdownText, setMarkdownText] = useState("");
-  const [preview, setPreview] = useState("");
-
-  useEffect(() => {
-    setPreview(marked.parse(markdownText));
-  }, [markdownText]);
+const MarkdownEditor = ({ markdownText, setMarkdownText }) => {
+  const handleChange = (e) => {
+    setMarkdownText(e.target.value);
+  };
 
   return (
     <>
       <textarea
         className="textarea"
         value={markdownText}
-        onChange={(e) => setMarkdownText(e.target.value)}
-        placeholder="Enter markdown here..."
+        onChange={handleChange}
+        placeholder="Write your markdown here..."
       />
-      <div
-        className="preview"
-        dangerouslySetInnerHTML={{ __html: preview }}
-      />
+      <div className="preview">
+        <ReactMarkdown>{markdownText}</ReactMarkdown>
+      </div>
     </>
   );
 };
