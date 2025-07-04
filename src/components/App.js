@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MarkdownEditor from "./MarkdownEditor";
 import "./styles.css";
 
-const App = () => {
+function App() {
+  const [markdownText, setMarkdownText] = useState("");
+
+  useEffect(() => {
+  }, [markdownText]);
+
   return (
     <div className="app">
-      <MarkdownEditor />
+      <MarkdownEditor markdownText={markdownText} setMarkdownText={setMarkdownText} />
     </div>
   );
-};
+}
 
 export default App;
