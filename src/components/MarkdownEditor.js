@@ -3,10 +3,10 @@ import { marked } from "marked";
 
 const MarkdownEditor = () => {
   const [markdownText, setMarkdownText] = useState("");
-  const [htmlPreview, setHtmlPreview] = useState("");
+  const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    setHtmlPreview(marked.parse(markdownText));
+    setPreview(marked.parse(markdownText));
   }, [markdownText]);
 
   return (
@@ -15,11 +15,11 @@ const MarkdownEditor = () => {
         className="textarea"
         value={markdownText}
         onChange={(e) => setMarkdownText(e.target.value)}
-        placeholder="Enter markdown text here..."
+        placeholder="Enter markdown here..."
       />
       <div
         className="preview"
-        dangerouslySetInnerHTML={{ __html: htmlPreview }}
+        dangerouslySetInnerHTML={{ __html: preview }}
       />
     </>
   );
